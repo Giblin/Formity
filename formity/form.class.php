@@ -29,26 +29,18 @@ class Form {
 		return $form;
 	}
 	
-	public function addRow(array $attributes = null ,array $elements){
+	public function addRow(array $attributes ,array $elements){
 		$this->row[] = new formrow($attributes);
-		foreach($elements as $element){
-			$this->row[$this->lastRow()]->addElement($element);
-		}
+		$this->row[$this->lastRow()]->addElements($elements);
 	}
-	public function makeName(array $attributes = null, $oneField = true){
-		if($oneField){
-			$lable = new Lable('Full Name',array('for'=>'full_name','class'=>'col-xs-12'));
-			$field = new Input(array('id'=>'full_name','name'=>'full_name','class'=>'form-control'));
-			$this->addRow(array(),array($lable,$field));
-		}
-		else{
-			$lableFirst = new Lable('First Name',array('for'=>'first_name','class'=>'col-xs-6'));
-			$fieldFirst = new Input(array('id'=>'first_name','name'=>'first_name','class'=>'form-control'));
-			$this->addRow(array(),array($lableFirst,$fieldFirst));
-			
-			$lableLast = new Lable('Last Name',array('for'=>'last_name','class'=>'col-xs-6'));
-			$fieldLast = new Input(array('id'=>'last_name','name'=>'last_name','class'=>'form-control'));
-			$this->addRow(array(),array($lableLast,$fieldLast));	
+	public function makeName(array $attributes, $oneField = false){
+		$name = new Premade\Namefield($oneField);
+		$this->addRow($attributes,$name->getName());
+	}
+	public function makeAddress(array $attributes){
+		$address = new Premade\Addressblock();
+		foreach($address->getAddress() as $row){
+			$this->addRow($attributes,$row);
 		}
 	}
 	

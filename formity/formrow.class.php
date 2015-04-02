@@ -3,7 +3,7 @@ namespace Formity;
 class Formrow{
 	
 	private $attr;
-	private $elements;
+	private $columns;
 	
 	public function __construct(array $attributes){
 		$this->attr = $attributes;	
@@ -25,14 +25,28 @@ class Formrow{
 			$tag .= '"';
 		}
 		$tag .= '>';
-		foreach($this->elements as $element){
-			$tag .= $element->getTag();	
+		foreach($this->columns as $column){
+			$tag .= $column->getColumn();	
 		}
 		$tag .= '</div>';
 		return $tag;
 	}
-	public function addElement($element){
-		$this->elements[] = $element;	
+	public function addElements($elements){
+		$colWidth = floor(12/count($elements));
+		for($i=0; $i<count($elements); $i++){
+			$this->columns[] = new Formcolumn(array('class'=>'col-xs-'.$colWidth));
+			foreach($elements[$i] as $element){
+				$this->columns[$this->lastColumn()]->addElement($element);
+			}
+			
+		}
+			
+	}
+	private function lastColumn(){
+		end($this->columns);
+		$last_added_key = key($this->columns);
+		reset($this->columns);
+		return $last_added_key;
 	}
 }
 ?>

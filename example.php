@@ -16,7 +16,14 @@ $form = new formity\form('/login.php','POST',array('id'=>'loginForm'));
 $user_name_input = new Formity\Input(array('id'=>'username','name'=>'username','class'=>'form-control'));
 $form->addRow(array('class'=>'padding-down-20','id'=>'row1'),array($user_name_label,$user_name_input));*/
 $form->makeName(array(),false);
+$form->makeAddress(array());
+$emailLable = new Formity\Lable('Email',array('for'=>'email'));
+$emailInput = new Formity\Input(array('id'=>'email','name'=>'email','class'=>'form-control'));
+$form->addRow(array(),array(array($emailLable,$emailInput)));
 echo $form->buildForm();
+
+
+
 /*$form->addLable('User Name',array('for'=>'username'));
 $form->addInput('input',array('id'=>'username','name'=>'username','class'=>'form-control'));*/
 //echo $form->startForm();
