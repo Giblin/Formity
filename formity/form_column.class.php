@@ -1,6 +1,6 @@
 <?php
 namespace Formity;
-class Formcolumn{
+class Form_Column{
 	
 	private $attr;
 	private $elements;

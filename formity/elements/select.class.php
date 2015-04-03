@@ -1,5 +1,5 @@
 <?php
-namespace Formity;
+namespace Formity\Elements;
 class Select{
 	
 	protected $attr;

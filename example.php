@@ -11,24 +11,13 @@ spl_autoload_extensions(".class.php"); // comma-separated list
 spl_autoload_register();
 /*include_once('formity/formity.php');*/
 
-$form = new formity\form('/login.php','POST',array('id'=>'loginForm'));
-/*$user_name_label = new Formity\Lable('User Name',array('for'=>'username','class'=>'someClass'));
-$user_name_input = new Formity\Input(array('id'=>'username','name'=>'username','class'=>'form-control'));
-$form->addRow(array('class'=>'padding-down-20','id'=>'row1'),array($user_name_label,$user_name_input));*/
+$form = new formity\form('/validate_example.php','POST',array('id'=>'loginForm'));
 $form->makeName(array(),false);
 $form->makeAddress(array());
-$emailLable = new Formity\Lable('Email',array('for'=>'email'));
-$emailInput = new Formity\Input(array('id'=>'email','name'=>'email','class'=>'form-control'));
+$emailLable = new Formity\Elements\Lable('Email',array('for'=>'email'));
+$emailInput = new Formity\Elements\Input(array('id'=>'email','name'=>'email','class'=>'form-control'));
 $form->addRow(array(),array(array($emailLable,$emailInput)));
 echo $form->buildForm();
-
-
-
-/*$form->addLable('User Name',array('for'=>'username'));
-$form->addInput('input',array('id'=>'username','name'=>'username','class'=>'form-control'));*/
-//echo $form->startForm();
-//$form->echoElement();
-//echo $form->endForm();
 
 
 ?>

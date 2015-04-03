@@ -1,6 +1,6 @@
 <?php
 namespace Formity;
-class Formrow{
+class Form_Row{
 	
 	private $attr;
 	private $columns;
@@ -34,7 +34,7 @@ class Formrow{
 	public function addElements($elements){
 		$colWidth = floor(12/count($elements));
 		for($i=0; $i<count($elements); $i++){
-			$this->columns[] = new Formcolumn(array('class'=>'col-xs-'.$colWidth));
+			$this->columns[] = new Form_Column(array('class'=>'col-xs-'.$colWidth));
 			foreach($elements[$i] as $element){
 				$this->columns[$this->lastColumn()]->addElement($element);
 			}

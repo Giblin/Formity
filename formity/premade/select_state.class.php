@@ -1,6 +1,6 @@
 <?php
-namespace Formity;
-class Selectstate extends Select{
+namespace Formity\Premade;
+class Select_State extends \Formity\Elements\Select{
 	public function __construct(array $attributes){
 		$this->attr = $attributes;
 		$this->options = array(

@@ -30,15 +30,15 @@ class Form {
 	}
 	
 	public function addRow(array $attributes ,array $elements){
-		$this->row[] = new formrow($attributes);
+		$this->row[] = new Form_Row($attributes);
 		$this->row[$this->lastRow()]->addElements($elements);
 	}
 	public function makeName(array $attributes, $oneField = false){
-		$name = new Premade\Namefield($oneField);
+		$name = new Premade\Name_Field($oneField);
 		$this->addRow($attributes,$name->getName());
 	}
 	public function makeAddress(array $attributes){
-		$address = new Premade\Addressblock();
+		$address = new Premade\Address_Block();
 		foreach($address->getAddress() as $row){
 			$this->addRow($attributes,$row);
 		}

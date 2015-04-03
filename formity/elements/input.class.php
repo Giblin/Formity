@@ -1,18 +1,15 @@
 <?php
-namespace Formity;
-
-class Lable{
+namespace Formity\Elements;
+class Input{
 	
 	private $attr;
-	private $text;
 	
-	public function __construct($lableText,array $attributes){
+	public function __construct(array $attributes){
 		$this->attr = $attributes;
-		$this->text = $lableText;
 	}
 	
 	public function getTag(){
-		$tag = '<label  ';
+		$tag = '<input ';
 		if(!empty($this->attr)){
 			foreach($this->attr as $name=>$val){
 				$tag .= $name.'="'.$val.'"';	
@@ -20,7 +17,6 @@ class Lable{
 		}
 		
 		$tag .= '>';
-		$tag .= $this->text.'</label>';
 		return $tag;
 	}
 }
